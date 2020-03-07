@@ -1,14 +1,24 @@
-var http = require("http");
+// app.js
+// load the things we need
+var express = require('express');
+var app = express();
 
-http.createServer(function (request, response) {
-   // Send the HTTP header 
-   // HTTP Status: 200 : OK
-   // Content Type: text/plain
-   response.writeHead(200, {'Content-Type': 'text/plain'});
-   
-   // Send the response body as "Hello World"
-   response.end('Hello World\n');
-}).listen(80);
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
-// Console will print the message
-console.log('Server running at http://127.0.0.1:80/');
+// use res.render to load up an ejs view file
+
+// index page 
+app.get('/', function(req, res) {
+    res.render('pages/index');
+});
+
+// about page 
+// app.get('/about', function(req, res) {
+//     res.render('pages/about');
+// });
+
+const port = process.env.PORT || 80;
+app.listen(port);
+
+console.log("Server running at http://localhost:%d", port);
