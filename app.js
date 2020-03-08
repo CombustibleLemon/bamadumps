@@ -2,6 +2,9 @@
 // load the things we need
 var express = require('express');
 var app = express();
+var path = require('path')
+app.use(express.static(path.join(__dirname, 'public')));
+
 var buildingList;
 
 console.log("Loading pg")
