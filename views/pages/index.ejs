@@ -13,11 +13,54 @@
         <p>Welcome to templating using EJS</p>
     </div>
     
-    <ul>
-        <% buildingList.forEach(function(building) { %>
-            <li><%= building.name %></li>
-        <% }); %>
-    </ul>
+    <section id="list-university">
+        <h2>University buildings</h2>
+        <ol>
+            <% buildings.filter(function(obj){return obj.type==='university'}).forEach(function(building) { %>
+                <li>
+                    <strong><a href="buildings/<%= building.name %>"></a><%= building.name %></strong>
+                    <br/>
+                    Testing 123
+                </li>
+            <% }); %>
+        </ol>
+    </section>
+    <section id="list-housing">
+        <h2>Residence halls</h2>
+        <ol>
+            <% buildings.filter(function(obj){return obj.type==='housing'}).forEach(function(building) { %>
+                <li>
+                    <strong><a href="buildings/<%= building.name %>"></a><%= building.name %></strong>
+                    <br/>
+                    Testing 123
+                </li>
+            <% }); %>
+        </ol>
+    </section>
+    <section id="list-greek">
+        <h2>Greek houses</h2>
+        <ol>
+            <% buildings.filter(function(obj){return obj.type==='greek'}).forEach(function(building) { %>
+                <li>
+                    <strong><a href="buildings/<%= building.name %>"></a><%= building.name %></strong>
+                    <br/>
+                    Testing 123
+                </li>
+            <% }); %>
+        </ol>
+    </section>
+    <section id="list-restaurants">
+        <h2>Restaurants and bars</h2>
+        <ol>
+            <% buildings.filter(function(obj){return obj.type==='restaurants'}).forEach(function(building) { %>
+                <li>
+                    <strong><a href="buildings/<%= building.name %>"></a><%= building.name %></strong>
+                    <br/>
+                    Testing 123
+                </li>
+            <% }); %>
+        </ol>
+    </section>
 </main>
 
 </body>

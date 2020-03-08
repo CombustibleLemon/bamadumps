@@ -2,6 +2,18 @@
 // load the things we need
 var express = require('express');
 var app = express();
+var buildingList;
+
+console.log("Loading pg")
+const { Pool } = require('pg')
+const pool = new Pool()
+pool.query('SELECT * FROM buildings', (err, res) => {
+  if (err) {
+    throw err
+  }
+  console.log('Building list:', res)
+  buildingList = res.rows
+})
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -10,7 +22,9 @@ app.set('view engine', 'ejs');
 
 // index page 
 app.get('/', function(req, res) {
-    res.render('pages/index');
+    res.render('pages/index',{
+      buildings : buildingList
+    });
 });
 
 // about page 
